@@ -7,8 +7,8 @@ using System.Web;
 
 namespace Memberships.Entities
 {
-    [Table("Section")]
-    public class Section
+    [Table("Part")]
+    public class Part
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
