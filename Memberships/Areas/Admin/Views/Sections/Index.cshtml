@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Memberships.Entities.Section>
+@using Memberships.Areas.Admin.Models
 
 @{
     ViewBag.Title = "Index";
@@ -22,11 +23,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
-        <td>
-            @Html.Partial("_EditButtonPartial", item.Id)
-            @Html.Partial("_DetailsButtonPartial", item.Id)
-            @Html.Partial("_DeleteButtonPartial", item.Id)
-        </td>
+        @Html.Partial("_TableButtonPartial",
+            new SmallButtonModel
+            {
+                Id = item.Id
+            });
     </tr>
 }
 

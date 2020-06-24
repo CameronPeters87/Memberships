@@ -224,10 +224,10 @@
     <Content Include="Areas\Admin\Views\Sections\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Sections\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_BackToListButtonPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_EditButtonPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_DeleteButtonPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_DetailsButtonPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_CreateButtonPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_SmallButtonPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_TableButtonPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_EditButtonPartial.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
