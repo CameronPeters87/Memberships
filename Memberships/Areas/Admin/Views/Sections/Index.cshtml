@@ -7,10 +7,10 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.Partial("_CreateButtonPartial")
 </p>
-<table class="table">
-    <tr>
+<table class="table table-striped">
+    <tr class="success">
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -23,8 +23,8 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.Partial("_EditButtonPartial", item.Id) |
-            @Html.Partial("_DetailsButtonPartial", item.Id) |
+            @Html.Partial("_EditButtonPartial", item.Id)
+            @Html.Partial("_DetailsButtonPartial", item.Id)
             @Html.Partial("_DeleteButtonPartial", item.Id)
         </td>
     </tr>
