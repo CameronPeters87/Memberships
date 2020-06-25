@@ -69,6 +69,8 @@ namespace Memberships.Areas.Admin.Controllers
         // GET: Admin/Items/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
+            
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -78,6 +80,11 @@ namespace Memberships.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+
+            item.ItemTypes = await db.ItemTypes.ToListAsync();
+            item.Sections = await db.Sections.ToListAsync();
+            item.Parts = await db.Parts.ToListAsync();
+
             return View(item);
         }
 

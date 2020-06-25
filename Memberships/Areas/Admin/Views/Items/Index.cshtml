@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<Memberships.Entities.Item>
-
+@using Memberships.Areas.Admin.Models
 @{
     ViewBag.Title = "Index";
 }
@@ -7,10 +7,10 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.Partial("_CreateButtonPartial")
 </p>
-<table class="table">
-    <tr>
+<table class="table table-striped">
+    <tr class="success">
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -47,47 +47,48 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Url)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HTML)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WaitDays)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemTypeId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SectionId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PartId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsFree)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HTML)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WaitDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemTypeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFree)
+            </td>
+            @Html.Partial("_TableButtonPartial",
+                new SmallButtonModel
+                {
+                    Id = item.Id
+                });
+        </tr>
+    }
 
 </table>
