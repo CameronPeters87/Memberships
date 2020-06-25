@@ -174,6 +174,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductLinkTextsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductTypesController.cs" />
     <Compile Include="Areas\Admin\Controllers\SectionsController.cs" />
+    <Compile Include="Areas\Admin\Models\ProductModel.cs" />
     <Compile Include="Areas\Admin\Models\SmallButtonModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
