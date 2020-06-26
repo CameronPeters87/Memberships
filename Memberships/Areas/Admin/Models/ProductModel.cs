@@ -21,7 +21,9 @@ namespace Memberships.Areas.Admin.Models
         public string ImageUrl { get; set; }
         public int ProductLinkTextId { get; set; }
         public int ProductTypeId { get; set; }
+        [DisplayName("Product Types")]
         public ICollection<ProductType> ProductTypes { get; set; }
+        [DisplayName("Product Link Texts")]
         public ICollection<ProductLinkText> ProductLinkTexts { get; set; }
         
         // Return product type title
