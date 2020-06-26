@@ -23,7 +23,7 @@ namespace Memberships.Areas.Admin.Controllers
         {
             // Get Product Entity list
             var product = await db.Products.ToListAsync();
-            // Convert Product entity into view model
+            // Convert Product entity into view model using Conversion extension class
             var model = await product.Convert(db);
 
             // Send in ProductModel in view
@@ -85,7 +85,12 @@ namespace Memberships.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(product);
+
+            var prod = new List<Product>();
+            prod.Add(product);
+            var ProductModel = await prod.Convert(db);
+
+            return View(ProductModel.First());
         }
 
         // POST: Admin/Products/Edit/5
