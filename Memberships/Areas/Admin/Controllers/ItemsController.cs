@@ -38,13 +38,13 @@ namespace Memberships.Areas.Admin.Controllers
         }
 
         // GET: Admin/Items/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
             var model = new Item
             {
-                ItemTypes = db.ItemTypes.ToList(),
-                Sections = db.Sections.ToList(),
-                Parts = db.Parts.ToList()
+                ItemTypes = await db.ItemTypes.ToListAsync(),
+                Sections = await db.Sections.ToListAsync(),
+                Parts = await db.Parts.ToListAsync()
             };
             return View(model);
         }
