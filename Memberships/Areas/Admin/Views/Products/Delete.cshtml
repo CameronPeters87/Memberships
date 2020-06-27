@@ -1,4 +1,4 @@
-﻿@model Memberships.Entities.Item
+﻿@model Memberships.Areas.Admin.Models.ProductModel
 
 @{
     ViewBag.Title = "Delete";
@@ -28,14 +28,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Url)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Url)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.ImageUrl)
         </dt>
 
@@ -44,69 +36,31 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HTML)
+            @Html.DisplayNameFor(model => model.ProductTypes)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.HTML)
+            @Html.DisplayFor(model => model.ProductType)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.WaitDays)
+            @Html.DisplayNameFor(model => model.ProductLinkTexts)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.WaitDays)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemTypeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ItemTypeId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SectionId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SectionId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PartId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PartId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsFree)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsFree)
+            @Html.DisplayFor(model => model.ProductLinkText)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-<div class="form-actions no-color">
-    <input type="submit" value="Delete" class="btn btn-danger" /> |
-    @Html.Partial("_BackToListButtonPartial")
-</div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.Partial("_BackToListButtonPartial")
+        </div>
     }
 </div>

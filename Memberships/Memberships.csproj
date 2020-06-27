@@ -175,6 +175,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductTypesController.cs" />
     <Compile Include="Areas\Admin\Controllers\SectionsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SubscriptionsController.cs" />
     <Compile Include="Areas\Admin\Extensions\ConversionExtensions.cs" />
     <Compile Include="Areas\Admin\Models\ProductModel.cs" />
     <Compile Include="Areas\Admin\Models\SmallButtonModel.cs" />
@@ -268,6 +269,11 @@
     <Content Include="Areas\Admin\Views\Products\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscriptions\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscriptions\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscriptions\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscriptions\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscriptions\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

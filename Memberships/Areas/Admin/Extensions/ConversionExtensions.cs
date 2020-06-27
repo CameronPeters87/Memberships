@@ -38,5 +38,36 @@ namespace Memberships.Areas.Admin.Extensions
                        ProductTypes = types
                    };
         }
+
+        // Convert List ProductModel into 1 ProductModel
+        // Copy Above class and remove IEnumerable
+        public static async Task<ProductModel> Convert
+            (this Product products, ApplicationDbContext db)
+        {
+            // We need the lists thats in the db
+            var texts = await db.ProductLinkTexts.FirstOrDefaultAsync(
+                p => p.Id.Equals(products.ProductLinkTextId));
+            var types = await db.ProductTypes.FirstOrDefaultAsync(
+                p => p.Id.Equals(products.ProductTypeId));
+
+            // Link using linq
+                   var model = new ProductModel
+                   {
+                       Id = products.Id,
+                       Title = products.Title,
+                       Description = products.Description,
+                       ImageUrl = products.ImageUrl,
+                       ProductLinkTextId = products.ProductLinkTextId,
+                       ProductTypeId = products.ProductTypeId,
+                       ProductLinkTexts = new List<ProductLinkText>(),
+                       ProductTypes = new List<ProductType>()
+                   };
+
+            // Add data to model
+            model.ProductLinkTexts.Add(texts);
+            model.ProductTypes.Add(types);
+
+            return model;
+        }
     }
 }
