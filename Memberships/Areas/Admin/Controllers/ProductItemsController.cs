@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Memberships.Entities;
 using Memberships.Models;
+using Memberships.Areas.Admin.Models;
 
 namespace Memberships.Areas.Admin.Controllers
 {
@@ -38,9 +39,14 @@ namespace Memberships.Areas.Admin.Controllers
         }
 
         // GET: Admin/ProductItems/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            return View();
+            var model = new ProductItemModel
+            {
+                Products = await db.Products.ToListAsync(),
+                Items = await db.Items.ToListAsync()
+            };
+            return View(model);
         }
 
         // POST: Admin/ProductItems/Create
