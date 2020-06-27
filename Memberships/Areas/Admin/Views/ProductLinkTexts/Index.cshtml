@@ -10,7 +10,6 @@
 <p>
     @Html.Partial("_CreateButtonPartial")
 </p>
-
 <table class="table table-striped">
     <tr class="success">
         <th>
@@ -19,17 +18,18 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        @Html.Partial("_TableButtonPartial",
-            new SmallButtonModel
-            {
-                Id = item.Id
-            });
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            @Html.Partial("_TableButtonPartial",
+                new SmallButtonModel
+                {
+                    Id = item.Id
+                });
+        </tr>
+    }
 
 </table>

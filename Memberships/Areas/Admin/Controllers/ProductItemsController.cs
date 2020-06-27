@@ -21,7 +21,9 @@ namespace Memberships.Areas.Admin.Controllers
         // GET: Admin/ProductItems
         public async Task<ActionResult> Index()
         {
-            return View(await db.ProductItems.Convert(db));
+            var model = await db.ProductItems.Convert(db);
+            
+            return View(model);
         }
 
         // GET: Admin/ProductItems/Details/5
