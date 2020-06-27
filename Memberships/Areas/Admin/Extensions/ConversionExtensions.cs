@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -68,6 +69,28 @@ namespace Memberships.Areas.Admin.Extensions
             model.ProductTypes.Add(types);
 
             return model;
+        }
+
+        // For ProductItems ViewModel
+        public static async Task<IEnumerable<ProductItemModel>> Convert
+            (this IQueryable<ProductItem> productItems, ApplicationDbContext db)
+        {
+            // If products table data is empty, return empty table list
+            if (productItems.Count().Equals(0))
+                return new List<ProductItemModel>();
+
+            // Link using linq
+            return await (from pi in productItems
+                          select new ProductItemModel
+                          {
+                              // We wont fill collections, because we dont need it in index view
+                              ItemId = pi.ItemId,
+                              ProductId = pi.ProductId,
+                              ItemTitle = db.Items.FirstOrDefault(
+                                  i => i.Id.Equals(pi.ItemId)).Title,
+                              ProductTitle = db.Products.FirstOrDefault(
+                                  p => p.Id.Equals(pi.ProductId)).Title
+                          }).ToListAsync();
         }
     }
 }

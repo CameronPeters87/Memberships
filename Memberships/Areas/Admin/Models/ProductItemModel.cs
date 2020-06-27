@@ -14,9 +14,9 @@ namespace Memberships.Areas.Admin.Models
         [DisplayName("Item Id")]
         public int ItemId { get; set; }
         [DisplayName("Product Title")]
-        public int ProductTitle { get; set; }
+        public string ProductTitle { get; set; }
         [DisplayName("Item Title")]
-        public int ItemTitle { get; set; }
+        public string ItemTitle { get; set; }
         public ICollection<Product> Products { get; set; }
         public ICollection<Item> Items { get; set; }
 
