@@ -100,10 +100,14 @@ namespace Memberships.Areas.Admin.Extensions
             // Link using linq
             var model = new ProductItemModel
             {
-                ItemId = productItem.ItemId,
                 ProductId = productItem.ProductId,
+                ItemId = productItem.ItemId,
+                Products = await db.Products.ToListAsync(),
                 Items = await db.Items.ToListAsync(),
-                Products = await db.Products.ToListAsync()
+                ItemTitle = (await db.Items.FirstOrDefaultAsync(i =>
+                   i.Id.Equals(productItem.ItemId))).Title,
+                ProductTitle = (await db.Products.FirstOrDefaultAsync(p =>
+                   p.Id.Equals(productItem.ProductId))).Title
             };
 
             return model;

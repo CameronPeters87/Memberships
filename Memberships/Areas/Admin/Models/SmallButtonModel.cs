@@ -24,22 +24,21 @@ namespace Memberships.Areas.Admin.Models
                 var param = new StringBuilder("?");
                 if (Id != null && Id > 0)
                 {
-                    param.Append(String.Format("{0}={1}&", "Id", Id));
+                    param.Append(String.Format("{0}={1}&", "id", Id));
                 }
-
                 if (ItemId != null && ItemId > 0)
                 {
-                    param.Append(String.Format("{0}={1}&", "ItemId", ItemId));
+                    param.Append(String.Format("{0}={1}&", "itemId", ItemId));
                 }
 
-                if(ProductId != null && ProductId > 0)
+                if (ProductId != null && ProductId > 0)
                 {
-                    param.Append(String.Format("{0}={1}&", "ProductId", ProductId));
+                    param.Append(String.Format("{0}={1}&", "productId", ProductId));
                 }
-
+                
                 if (SubscriptionId != null && SubscriptionId > 0)
                 {
-                    param.Append(String.Format("{0}={1}&", "SubscriptionId", SubscriptionId));
+                    param.Append(String.Format("{0}={1}&", "subscriptionId", SubscriptionId));
                 }
 
                 return param.ToString().Substring(0, param.Length - 1);

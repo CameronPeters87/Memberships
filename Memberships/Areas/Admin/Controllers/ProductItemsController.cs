@@ -70,18 +70,19 @@ namespace Memberships.Areas.Admin.Controllers
         }
 
         // GET: Admin/ProductItems/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<ActionResult> Edit(int? itemId, int? productId)
         {
-            if (id == null)
+            if (itemId == null || productId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductItem productItem = await db.ProductItems.FindAsync(id);
+            //ProductItem productItem = await db.ProductItems.FindAsync(id);
+            ProductItem productItem = await GetProductItem(itemId, productId);
             if (productItem == null)
             {
                 return HttpNotFound();
             }
-            return View(productItem.Convert(db));
+            return View(await productItem.Convert(db));
         }
 
         // POST: Admin/ProductItems/Edit/5
@@ -100,7 +101,28 @@ namespace Memberships.Areas.Admin.Controllers
             return View(productItem);
         }
 
+        private async Task<ProductItem> GetProductItem (int? itemId, int? productId)
+        {
+            try
+            {
+                int prdId = 0;
+                int itmId = 0;
 
+                // Assign itmId and prdId to the parameters
+                int.TryParse(productId.ToString(), out itmId);
+                int.TryParse(itemId.ToString(), out itmId);
+
+                // use those 2 ids to fetch the correct productItem
+                var productItem = await db.ProductItems.FirstOrDefaultAsync(
+                    pi => pi.ProductId.Equals(prdId) && pi.ItemId.Equals(itmId));
+
+                return productItem;
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
         // GET: Admin/ProductItems/Delete/5
         public async Task<ActionResult> Delete(int? id)
