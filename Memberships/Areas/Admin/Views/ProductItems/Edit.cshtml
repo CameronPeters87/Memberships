@@ -34,7 +34,7 @@
                 @Html.DropDownListFor(model => model.ItemId,
                     Model.Items.ToSelectListItem(Model.ItemId),
                     new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ItemId, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Items, "", new { @class = "text-danger" })
             </div>
         </div>
 
