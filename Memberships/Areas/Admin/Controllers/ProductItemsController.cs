@@ -81,7 +81,7 @@ namespace Memberships.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(productItem);
+            return View(productItem.Convert(db));
         }
 
         // POST: Admin/ProductItems/Edit/5
@@ -99,6 +99,8 @@ namespace Memberships.Areas.Admin.Controllers
             }
             return View(productItem);
         }
+
+
 
         // GET: Admin/ProductItems/Delete/5
         public async Task<ActionResult> Delete(int? id)

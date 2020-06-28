@@ -92,5 +92,21 @@ namespace Memberships.Areas.Admin.Extensions
                                   p => p.Id.Equals(pi.ProductId)).Title
                           }).ToListAsync();
         }
+
+        // Take one ProductItem and Convert into one ProductItemModel
+        public static async Task<ProductItemModel> Convert
+            (this ProductItem productItem, ApplicationDbContext db)
+        {
+            // Link using linq
+            var model = new ProductItemModel
+            {
+                ItemId = productItem.ItemId,
+                ProductId = productItem.ProductId,
+                Items = await db.Items.ToListAsync(),
+                Products = await db.Products.ToListAsync()
+            };
+
+            return model;
+        }
     }
 }
