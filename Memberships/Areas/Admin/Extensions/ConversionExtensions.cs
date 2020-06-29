@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Web;
 
 namespace Memberships.Areas.Admin.Extensions
@@ -108,5 +109,53 @@ namespace Memberships.Areas.Admin.Extensions
 
             return model;
         }
+
+        public static async Task<bool> CanChange
+            (this ProductItem productItem, ApplicationDbContext db)
+        {
+            var oldPI = await db.ProductItems.CountAsync(pi =>
+              pi.ProductId.Equals(productItem.OldProductId) &&
+              pi.ItemId.Equals(productItem.OldItemId));
+
+            var newPI = await db.ProductItems.CountAsync(pi =>
+                pi.ProductId.Equals(productItem.OldProductId) &&
+                pi.ItemId.Equals(productItem.OldItemId));
+
+            return oldPI.Equals(1) && newPI.Equals(0);
+        }
+
+        public static async Task Change
+            (this ProductItem productItem, ApplicationDbContext db)
+        {
+            var oldProductItem = await db.ProductItems.FirstOrDefaultAsync(
+                    pi => pi.ProductId.Equals(productItem.OldProductId) &&
+                    pi.ItemId.Equals(productItem.OldItemId));
+
+            var newProductItem = await db.ProductItems.FirstOrDefaultAsync(
+                pi => pi.ProductId.Equals(productItem.ProductId) &&
+                pi.ItemId.Equals(productItem.ItemId));
+
+            if (oldProductItem != null && newProductItem == null)
+            {
+                newProductItem = new ProductItem
+                {
+                    ItemId = productItem.ItemId,
+                    ProductId = productItem.ProductId
+                };
+
+                using (var transaction = new TransactionScope(
+                    TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    try
+                    {
+                        db.ProductItems.Remove(oldProductItem);
+                        db.ProductItems.Add(newProductItem);
+
+                        await db.SaveChangesAsync();
+                        transaction.Complete();
+                    }
+                    catch { transaction.Dispose(); }
+                }
+            }
     }
 }
