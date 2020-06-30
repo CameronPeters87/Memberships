@@ -110,7 +110,7 @@ namespace Memberships.Areas.Admin.Controllers
                 int itmId = 0;
 
                 // Assign itmId and prdId to the parameters
-                int.TryParse(productId.ToString(), out itmId);
+                int.TryParse(productId.ToString(), out prdId);
                 int.TryParse(itemId.ToString(), out itmId);
 
                 // use those 2 ids to fetch the correct productItem
