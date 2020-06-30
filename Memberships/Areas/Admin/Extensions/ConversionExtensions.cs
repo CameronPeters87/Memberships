@@ -53,17 +53,17 @@ namespace Memberships.Areas.Admin.Extensions
                 p => p.Id.Equals(products.ProductTypeId));
 
             // Link using linq
-                   var model = new ProductModel
-                   {
-                       Id = products.Id,
-                       Title = products.Title,
-                       Description = products.Description,
-                       ImageUrl = products.ImageUrl,
-                       ProductLinkTextId = products.ProductLinkTextId,
-                       ProductTypeId = products.ProductTypeId,
-                       ProductLinkTexts = new List<ProductLinkText>(),
-                       ProductTypes = new List<ProductType>()
-                   };
+            var model = new ProductModel
+            {
+                Id = products.Id,
+                Title = products.Title,
+                Description = products.Description,
+                ImageUrl = products.ImageUrl,
+                ProductLinkTextId = products.ProductLinkTextId,
+                ProductTypeId = products.ProductTypeId,
+                ProductLinkTexts = new List<ProductLinkText>(),
+                ProductTypes = new List<ProductType>()
+            };
 
             // Add data to model
             model.ProductLinkTexts.Add(texts);
@@ -157,5 +157,6 @@ namespace Memberships.Areas.Admin.Extensions
                     catch { transaction.Dispose(); }
                 }
             }
+        }
     }
 }
