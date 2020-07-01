@@ -10,7 +10,7 @@ using System.Data.Entity;
 
 namespace Memberships.Extensions
 {
-    public class IdentityExtension
+    public static class IdentityExtension
     {
         public static string GetUserFirstName (IIdentity identity)
         {
