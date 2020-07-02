@@ -722,17 +722,14 @@ namespace Memberships.Controllers
                         StartDate = DateTime.Now,
                         EndDate = DateTime.MaxValue
                     });
-
                     await db.SaveChangesAsync();
-
-
                 }
             }
             catch
             {
 
             }
-            return RedirectToAction("Index", "Subscriptions",
+            return RedirectToAction("Subscriptions", "Account",
                 new { userid = model.UserId });
         }
 

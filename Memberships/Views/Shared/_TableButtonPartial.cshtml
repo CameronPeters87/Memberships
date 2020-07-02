@@ -18,7 +18,7 @@
                 UserId = Model.UserId
             }
         )
-        @if (Model.UserId == null && Model.UserId.Equals(string.Empty))
+        @if (Model.UserId == null || Model.UserId.Equals(string.Empty))
         {
             @Html.Partial("_SmallButtonPartial",
                      new SmallButtonModel
