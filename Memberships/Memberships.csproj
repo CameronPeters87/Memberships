@@ -241,11 +241,11 @@
     <Content Include="Areas\Admin\Views\Sections\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Sections\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Sections\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_BackToListButtonPartial.cshtml" />
+    <Content Include="Views\Shared\_BackToListButtonPartial.cshtml" />
     <Content Include="Views\Shared\_CreateButtonPartial.cshtml" />
     <Content Include="Views\Shared\_SmallButtonPartial.cshtml" />
     <Content Include="Views\Shared\_TableButtonPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_EditButtonPartial.cshtml" />
+    <Content Include="Views\Shared\_EditButtonPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Parts\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Parts\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Parts\Details.cshtml" />
@@ -338,6 +338,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_AdminMenuPartial.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Create.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
