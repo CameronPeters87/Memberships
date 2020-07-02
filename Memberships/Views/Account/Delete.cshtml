@@ -27,22 +27,20 @@
             @Html.DisplayFor(model => model.FirstName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Password)
+        @Html.HiddenFor(model => model.Email)
+        @Html.HiddenFor(model => model.FirstName)
+        @Html.HiddenFor(model => model.Id)
 
-<div class="form-actions no-color">
-    <input type="submit" value="Delete" class="btn btn-danger" /> |
-    @Html.Partial("_BackToListButtonPartial")
-</div>
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.Partial("_BackToListButtonPartial")
+        </div>
     }
 </div>
