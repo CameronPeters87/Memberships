@@ -607,6 +607,67 @@ namespace Memberships.Controllers
             }
             return View(model);
         }
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> Delete(string userid)
+        {
+            if (userid == null || userid.Equals(string.Empty))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ApplicationUser user = await UserManager.FindByIdAsync(userid);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new UserViewModel
+            {
+                Email = user.Email,
+                FirstName = user.FirstName,
+                Id = user.Id,
+                Password = "Fake password"
+            };
+
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> Delete(UserViewModel model)
+        {
+            try
+            {
+                if (model == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                if (ModelState.IsValid)
+                {
+                    // Find User
+                    var user = await UserManager.FindByIdAsync(model.Id);
+                    // Delete user
+                    var result = await UserManager.DeleteAsync(user);
+                    if (result.Succeeded)
+                    {
+                        // Remove Subscriptions from user
+                        var db = new ApplicationDbContext();
+                        var subscriptions = db.UserSubscriptions.Where(us =>
+                            us.UserId.Equals(user.Id));
+                        db.UserSubscriptions.RemoveRange(subscriptions);
+                        await db.SaveChangesAsync();
+
+                        return RedirectToAction("Index", "Account");
+                    }
+                    AddErrors(result);
+                }
+            }
+            catch
+            {
+
+            }
+            return View(model);
+        }
+
 
     }
 }
