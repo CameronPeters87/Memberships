@@ -704,6 +704,8 @@ namespace Memberships.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Subscriptions(UserSubscriptionViewModel model)
         {
             try
@@ -732,7 +734,30 @@ namespace Memberships.Controllers
             return RedirectToAction("Subscriptions", "Account",
                 new { userid = model.UserId });
         }
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> RemoveUserSubscription(string userId, int subscriptionId)
+        {
+            try
+            {
+                if (userId == null || userId.Equals(String.Empty) || subscriptionId <= 0)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                if (ModelState.IsValid)
+                {
+                    var db = new ApplicationDbContext();
+                    var subs = db.UserSubscriptions.Where(us => us.UserId.Equals(userId) &&
+                        us.SubscriptionId.Equals(subscriptionId));
+                    db.UserSubscriptions.RemoveRange(subs);
+                    await db.SaveChangesAsync();
+                }
+            }
+            catch
+            {
 
-
+            }
+            return RedirectToAction("Subscriptions", "Account",
+                new { userid = userId });
+        }
     }
 }
