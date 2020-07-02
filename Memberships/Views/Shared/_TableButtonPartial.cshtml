@@ -14,34 +14,60 @@
                 Id = Model.Id,
                 ProductId = Model.ProductId,
                 ItemId = Model.ItemId,
-                SubscriptionId = Model.SubscriptionId
+                SubscriptionId = Model.SubscriptionId,
+                UserId = Model.UserId
             }
         )
-        @Html.Partial("_SmallButtonPartial",
-            new SmallButtonModel
+        @if (Model.UserId == null && Model.UserId.Equals(string.Empty))
+        {
+            @Html.Partial("_SmallButtonPartial",
+                     new SmallButtonModel
+                     {
+                         Action = "Details",
+                         ButtonType = "btn-success",
+                         Glyph = "info-sign",
+                         Text = "Details Button",
+                         Id = Model.Id,
+                         ProductId = Model.ProductId,
+                         ItemId = Model.ItemId,
+                         SubscriptionId = Model.SubscriptionId,
+                         UserId = Model.UserId
+
+                     }
+                 )
+        }
+            @if (Model.UserId != null && !Model.UserId.Equals(string.Empty))
             {
-                Action = "Details",
-                ButtonType = "btn-success",
-                Glyph = "info-sign",
-                Text = "Details Button",
-                Id = Model.Id,
-                ProductId = Model.ProductId,
-                ItemId = Model.ItemId,
-                SubscriptionId = Model.SubscriptionId
+                @Html.Partial("_SmallButtonPartial",
+                    new SmallButtonModel
+                    {
+                        Action = "Subscriptions",
+                        ButtonType = "btn-info",
+                        Glyph = "list",
+                        Text = "Subscriptions",
+                        Id = Model.Id,
+                        ProductId = Model.ProductId,
+                        ItemId = Model.ItemId,
+                        SubscriptionId = Model.SubscriptionId,
+                        UserId = Model.UserId
+                    }
+                )
             }
-        )
-        @Html.Partial("_SmallButtonPartial",
-            new SmallButtonModel
-            {
-                Action = "Delete",
-                ButtonType = "btn-danger",
-                Glyph = "trash",
-                Text = "Delete Button",
-                Id = Model.Id,
-                ProductId = Model.ProductId,
-                ItemId = Model.ItemId,
-                SubscriptionId = Model.SubscriptionId
-            }
-        )
-    </div>
+
+            @Html.Partial("_SmallButtonPartial",
+                new SmallButtonModel
+                {
+                    Action = "Delete",
+                    ButtonType = "btn-danger",
+                    Glyph = "trash",
+                    Text = "Delete Button",
+                    Id = Model.Id,
+                    ProductId = Model.ProductId,
+                    ItemId = Model.ItemId,
+                    SubscriptionId = Model.SubscriptionId,
+                    UserId = Model.UserId
+
+                }
+            )
+        </div>
 </td>
