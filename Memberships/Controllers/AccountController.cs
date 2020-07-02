@@ -12,6 +12,7 @@ using Memberships.Models;
 using System.Collections.Generic;
 using Memberships.Extensions;
 using System.Net;
+using System.Data.Entity;
 
 namespace Memberships.Controllers
 {
@@ -508,8 +509,6 @@ namespace Memberships.Controllers
         {
             return View();
         }
-
-        //
         // POST: /Account/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -667,7 +666,42 @@ namespace Memberships.Controllers
             }
             return View(model);
         }
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> Subscriptions(string userid)
+        {
+            if (userid == null || userid.Equals(string.Empty))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            // Instansiate model and db
+            var model = new UserSubscriptionViewModel();
+            var db = new ApplicationDbContext();
 
+            // Get UserSub List
+            model.UserSubscription = await
+                (from us in db.UserSubscriptions
+                 join s in db.Subscriptions on us.SubscriptionId equals s.Id
+                 where us.UserId.Equals(userid)
+                 select new UserSubscriptionModel
+                 {
+                     Id = us.SubscriptionId,
+                     StartDate = us.StartDate,
+                     EndDate = us.EndDate,
+                     Description = s.Description,
+                     RegistrationCode = s.RegistrationCode,
+                     Title = s.Title
+                 }).ToListAsync();
+
+            // Select all the Ids in the model.userSub
+            var ids = model.UserSubscription.Select(us => us.Id);
+            // Get Subscriptions List ids does not contain subId
+            model.Subscriptions = await db.Subscriptions.Where(s => 
+                !ids.Contains(s.Id)).ToListAsync();
+            // Disable dropdownlist if model subs are empty
+            model.DisableDropDownList = model.Subscriptions.Count.Equals(0);
+            model.UserId = userid;
+            return View(model);
+        }
 
     }
 }

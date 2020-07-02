@@ -9,7 +9,7 @@ namespace Memberships.Models
     public class UserSubscriptionViewModel
     {
         public ICollection<Subscription> Subscriptions { get; set; }
-        public ICollection<UserSubscriptionModel> UserSubscriptionModels { get; set; }
+        public ICollection<UserSubscriptionModel> UserSubscription { get; set; }
         public bool DisableDropDownList { get; set; }
         public string UserId { get; set; }
     }
