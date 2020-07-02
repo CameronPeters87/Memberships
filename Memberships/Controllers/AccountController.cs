@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using Memberships.Extensions;
 using System.Net;
 using System.Data.Entity;
+using Memberships.Entities;
 
 namespace Memberships.Controllers
 {
@@ -702,6 +703,39 @@ namespace Memberships.Controllers
             model.UserId = userid;
             return View(model);
         }
+        [HttpPost]
+        public async Task<ActionResult> Subscriptions(UserSubscriptionViewModel model)
+        {
+            try
+            {
+                if (model == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                if (ModelState.IsValid)
+                {
+                    var db = new ApplicationDbContext();
+                    db.UserSubscriptions.Add(new UserSubscription
+                    {
+                        UserId = model.UserId,
+                        SubscriptionId = model.SubscriptionId,
+                        StartDate = DateTime.Now,
+                        EndDate = DateTime.MaxValue
+                    });
+
+                    await db.SaveChangesAsync();
+
+
+                }
+            }
+            catch
+            {
+
+            }
+            return RedirectToAction("Index", "Subscriptions",
+                new { userid = model.UserId });
+        }
+
 
     }
 }
