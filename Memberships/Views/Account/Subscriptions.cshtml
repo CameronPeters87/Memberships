@@ -12,8 +12,14 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>User Subscription</h4>
+        <h4>Add Subscription to User</h4>
         <hr />
+        @if (Model.DisableDropDownList)
+        {
+            <div><strong>User has all Subscriptions</strong></div>
+            <br />
+        }
+        else {
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
@@ -31,6 +37,7 @@
                 <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </div>
+        }
     </div>
 }
 
