@@ -31,7 +31,7 @@ namespace Memberships.Extensions
         }
 
         // Use this method to get ProductThumbnails in index View
-        public static async Task<IEnumerable<ThumbnailModel>> GetProductThumbnails (
+        public static async Task<IEnumerable<ThumbnailModel>> GetProductThumbnailsAsync (
             this List<ThumbnailModel> thumbnails, string userId = null,
             ApplicationDbContext db = null)
         {
@@ -61,7 +61,7 @@ namespace Memberships.Extensions
                      select new ThumbnailModel
                      {
                          ProductId = p.Id,
-                         SubscriptionId = p.Id,
+                         SubscriptionId = sp.SubscriptionId,
                          Title = p.Title,
                          Description = p.Description,
                          ImageUrl = p.ImageUrl,
