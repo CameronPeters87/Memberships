@@ -695,7 +695,7 @@ namespace Memberships.Controllers
 
             // Select all the Ids in the model.userSub
             var ids = model.UserSubscription.Select(us => us.Id);
-            // Get Subscriptions List ids does not contain subId
+            // Get Subscriptions List ids does not contain subId for dropdown list
             model.Subscriptions = await db.Subscriptions.Where(s => 
                 !ids.Contains(s.Id)).ToListAsync();
             // Disable dropdownlist if model subs are empty

@@ -15,8 +15,8 @@ namespace Memberships.Controllers
         public async Task<ActionResult> Index()
         {
             // From HttpContextExtension
-            var userId = Request.IsAuthenticated ? HttpContext.User.Identity.GetUserId() : null;
-
+            //string userId = Request.IsAuthenticated ? HttpContext.GetUserId() : null;
+            string userId = "b7f8396d-e83d-49e2-9b0b-44e63d9b6ba4";
             var thumbnail = await new List<ThumbnailModel>().GetProductThumbnailsAsync(userId);
             var count = thumbnail.Count() / 4;
             var model = new List<ThumbnailAreaModel>();

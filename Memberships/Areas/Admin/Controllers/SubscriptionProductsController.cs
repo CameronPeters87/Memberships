@@ -11,6 +11,8 @@ using Memberships.Entities;
 using Memberships.Models;
 using Memberships.Areas.Admin.Models;
 using Memberships.Areas.Admin.Extensions;
+using System.Security.Cryptography;
+using System.Data.Entity.Core.Common.CommandTrees;
 
 namespace Memberships.Areas.Admin.Controllers
 {
@@ -130,26 +132,48 @@ namespace Memberships.Areas.Admin.Controllers
         }
 
         // GET: Admin/SubscriptionProducts/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Delete(int productId, int subscriptionId)
         {
-            if (id == null)
+            if (productId <= 0 || subscriptionId <= 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SubscriptionProduct subscriptionProduct = await db.SubscriptionProducts.FindAsync(id);
+            //SubscriptionProduct subscriptionProduct = await db.SubscriptionProducts.FindAsync(id);
+            SubscriptionProduct subscriptionProduct = await db.SubscriptionProducts
+                .Where(sp => sp.ProductId.Equals(productId) &&
+                sp.SubscriptionId.Equals(subscriptionId)).FirstOrDefaultAsync();
+
             if (subscriptionProduct == null)
             {
                 return HttpNotFound();
             }
-            return View(subscriptionProduct);
+            //SubscriptionProductModel model = new SubscriptionProductModel();
+            var model = await (from sp in db.SubscriptionProducts
+                               join p in db.Products on sp.ProductId equals p.Id
+                               join s in db.Subscriptions on sp.SubscriptionId equals s.Id
+                               where sp.ProductId.Equals(productId) &&
+                                sp.SubscriptionId.Equals(subscriptionId)
+                               select new SubscriptionProductModel
+                               {
+                                   ProductId = productId,
+                                   SubscriptionId = subscriptionId,
+                                   ProductTitle = p.Title,
+                                   SubscriptionTitle = s.Title
+                               }).FirstOrDefaultAsync();
+
+            return View(model);
         }
 
         // POST: Admin/SubscriptionProducts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int productId, int subscriptionId)
         {
-            SubscriptionProduct subscriptionProduct = await db.SubscriptionProducts.FindAsync(id);
+            //SubscriptionProduct subscriptionProduct = await db.SubscriptionProducts.FindAsync(id);
+            SubscriptionProduct subscriptionProduct = await db.SubscriptionProducts
+                .Where(sp => sp.ProductId.Equals(productId) &&
+                sp.SubscriptionId.Equals(subscriptionId)).FirstOrDefaultAsync();
+
             db.SubscriptionProducts.Remove(subscriptionProduct);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

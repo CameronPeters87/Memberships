@@ -1,4 +1,4 @@
-﻿@model Memberships.Entities.ProductItem
+﻿@model Memberships.Areas.Admin.Models.SubscriptionProductModel
 
 @{
     ViewBag.Title = "Delete";
@@ -8,10 +8,21 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>ProductItem</h4>
+    <h4>Subscription Product</h4>
     <hr />
     <dl class="dl-horizontal">
     </dl>
+    <br />
+    <table class="table table-striped">
+        <tr class="success">
+            <th>Subscription Title</th>
+            <th>Product Title</th>
+        </tr>
+        <tr>
+            <td>@Model.SubscriptionTitle</td>
+            <td>@Model.ProductTitle</td>
+        </tr>
+    </table>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()

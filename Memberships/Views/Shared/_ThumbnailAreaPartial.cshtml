@@ -13,9 +13,17 @@
         {
             <div class="col-sm-3">
                 <div class="thumbnail">
-                    <img src=@thumb.ImageUrl alt="" />
+                    <div class="thumbnail-container">
+                        <div class="thumbnail-img-container">
+                            <img class="thumbnail-img" src="@thumb.ImageUrl" alt="" />
+                        </div>
+                        <a class="tag text-tag hover-effect" href="@thumb.Link">
+                            @thumb.TagText   
+                        </a>
+                        <div class="tag content-tag">@thumb.ContentTag</div>
+                    </div>
                     <div class="caption">
-                        <h3><a href=@thumb.Link>@thumb.Title</a></h3>
+                        <h3><a href="@thumb.Link">@thumb.Title</a></h3>
                         <p>@thumb.Description</p>
                     </div>
                 </div>
