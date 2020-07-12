@@ -1,8 +1,77 @@
 ﻿.headline {
     margin: 0px 0px 15px;
-    border-bottom: 2px solid #A6ff00;
+    border-bottom: 2px solid #72C02C;
 }
 
-.thumbnail {
+.thumbnail { /* Adds padding to all items in the div*/
+    padding: 5px;
+}
 
+    .thumbnail .tag { /*makes the position of the tag absolute:
+                                which means you can position a tag using , top, bottom, right, left
+                          makes the tag pop out to the right of the box
+                      */
+        padding: 1px 6px;
+        right: -10px;
+        color: white;
+        display: inline-block;
+        position: absolute;
+    }
+    .thumbnail .thumbnail-container {
+        position: relative;
+    }
+
+    .thumbnail .text-tag {
+        background-color: #72C02C;
+        bottom: 5px;
+    }
+    .thumbnail .content-tag {
+        background-color: darkorange;
+        top: 5px;
+    }
+
+    .thumbnail .thumbnail-img-container {
+        overflow:hidden
+    }
+
+    .thumbnail .thumbnail-img {
+        width: 100%;
+        height: auto;
+        transition: all 0.8s ease-in-out 0s;
+    }
+
+    .thumbnail a, a:focus, a:hover, a:active { /* targeting the a tag in thumbnail container*/
+        outline: 0px none !important; /* Remove the line under a tags on hover*/
+        text-decoration: none;
+    }
+
+    .thumbnail > a:focus, a:hover, a:active { /* targeting the children in thumbnail container*/
+        color: #72C02C;
+    }
+
+    /*Target small devices with screen size of 480px or less*/
+@media screen and (min-width: 480px) {
+    .thumbnail { /* Thumbnail box max width of 260*/
+        max-width: 320px;
+    }
+}
+
+.thumbnail .hover-effect{
+    transition: all 0.4s ease-in-out 0s;
+}
+
+.thumbnail a.text-tag:hover {
+    box-shadow: 0px 0px 0px 2px #5FB611;
+}
+
+.thumbnail:hover a.text-tag {
+    right: 5px;
+}
+
+.thumbnail:hover {
+    box-shadow: 0px 0px 8px #555 /* box shadow color grey*/
+}
+
+.thumbnail:hover img{
+    transform: scale(1.2) rotate(2deg);
 }

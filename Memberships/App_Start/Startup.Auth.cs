@@ -63,6 +63,16 @@ namespace Memberships
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            // This uses cookie to store information for the signed in user
+            var authOptions = new CookieAuthenticationOptions
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                LoginPath = new PathString("/Account/Login"),
+                LogoutPath = new PathString("/Account/Logout"),
+                ExpireTimeSpan = TimeSpan.FromDays(7),
+            };
+            app.UseCookieAuthentication(authOptions);
         }
     }
 }

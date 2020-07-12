@@ -16,10 +16,13 @@ namespace Memberships.Controllers
         {
             // From HttpContextExtension
             //string userId = Request.IsAuthenticated ? HttpContext.GetUserId() : null;
-            string userId = "b7f8396d-e83d-49e2-9b0b-44e63d9b6ba4";
+            string userId = User.Identity.GetUserId();
+            //string userId = "b7f8396d-e83d-49e2-9b0b-44e63d9b6ba4";
             var thumbnail = await new List<ThumbnailModel>().GetProductThumbnailsAsync(userId);
             var count = thumbnail.Count() / 4;
             var model = new List<ThumbnailAreaModel>();
+
+            bool testBool = User.Identity.IsAuthenticated;
 
             for (int i = 0; i <= count; i++)
             {

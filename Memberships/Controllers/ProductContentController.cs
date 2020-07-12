@@ -1,6 +1,7 @@
 ﻿using Memberships.Entities;
 using Memberships.Extensions;
 using Memberships.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,8 @@ namespace Memberships.Controllers
         // GET: ProductContent
         public async Task<ActionResult> Index(int id)
         {
-            string userId = Request.IsAuthenticated ? HttpContext.GetUserId() : null;
+            //string userId = Request.IsAuthenticated ? HttpContext.GetUserId() : null;
+            string userId = User.Identity.GetUserId();
             var sections = SectionsExtension.GetProductSections(id, userId);
 
             return View(await sections);
