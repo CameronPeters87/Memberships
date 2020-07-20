@@ -33,6 +33,10 @@ namespace Memberships
                         "~/Content/thumbnail.css",
                         "~/Content/productContent.css",
                         "~/Content/carret.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/carret").Include(
+                      "~/Scripts/carret.js"));
+
         }
     }
 }

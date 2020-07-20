@@ -216,6 +216,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ContentViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProductItemRow.cs" />
@@ -263,6 +264,7 @@
     <Content Include="Areas\Admin\Views\Sections\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Sections\Index.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Scripts\carret.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.js" />
@@ -366,6 +368,7 @@
     <Content Include="Views\Shared\_ThumbnailAreaPartial.cshtml" />
     <Content Include="Views\ProductContent\Index.cshtml" />
     <Content Include="Views\ProductContent\_ProductSectionPartial.cshtml" />
+    <Content Include="Views\ProductContent\_ProductItemRowPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
