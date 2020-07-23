@@ -35,3 +35,12 @@
 .product-item .min-height {
     min-height: 90px;
 }
+
+.article h1, .article h2, .article h3 {
+    margin-top: 10px;
+    line-height: 150%;
+    color: #555;
+}
+.article h2, .article h3 {
+    color: #0094FF;
+}
