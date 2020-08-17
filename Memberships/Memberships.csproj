@@ -210,6 +210,7 @@
     <Compile Include="Extensions\IdentityExtension.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />
     <Compile Include="Extensions\SectionsExtension.cs" />
+    <Compile Include="Extensions\SubscriptionExtension.cs" />
     <Compile Include="Extensions\ThumbnailExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -245,6 +246,7 @@
     <Content Include="Content\Logos\membership-icon-30x152.png" />
     <Content Include="Content\Logos\membership-icon-45x184.png" />
     <Content Include="Content\productContent.css" />
+    <Content Include="Content\RegisterCode.css" />
     <Content Include="Content\thumbnail.css" />
     <Content Include="Content\navbar.css" />
     <Content Include="favicon.ico" />
@@ -370,6 +372,7 @@
     <Content Include="Views\ProductContent\_ProductSectionPartial.cshtml" />
     <Content Include="Views\ProductContent\_ProductItemRowPartial.cshtml" />
     <Content Include="Views\ProductContent\Content.cshtml" />
+    <Content Include="Views\Shared\_RegisterCodePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

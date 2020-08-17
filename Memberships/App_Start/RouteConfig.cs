@@ -16,7 +16,7 @@ namespace Memberships
             routes.MapRoute(
                 name: "ProductContent",
                 url: "{controller}/{action}/{productId}/{itemId}",
-                defaults: new { controller = "ProductContent", action = "Index" }
+                new { controller = "ProductContent", action = "Index" }
             );
 
             routes.MapRoute(

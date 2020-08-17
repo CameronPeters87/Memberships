@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace Memberships
 {
@@ -32,7 +31,8 @@ namespace Memberships
                         "~/Content/navbar.css",
                         "~/Content/thumbnail.css",
                         "~/Content/productContent.css",
-                        "~/Content/carret.css"));
+                        "~/Content/carret.css",
+                        "~/Content/RegisterCode.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/carret").Include(
                       "~/Scripts/carret.js"));
