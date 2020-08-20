@@ -194,6 +194,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductContentController.cs" />
+    <Compile Include="Controllers\RegisterCodeController.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\ItemType.cs" />
     <Compile Include="Entities\UserSubscription.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="Models\ProductItemRow.cs" />
     <Compile Include="Models\ProductSection.cs" />
     <Compile Include="Models\ProductSectionModel.cs" />
+    <Compile Include="Models\RegisterUserModel.cs" />
     <Compile Include="Models\ThumbnailModel.cs" />
     <Compile Include="Models\ThumbnailAreaModel.cs" />
     <Compile Include="Models\UserSubscriptionModel.cs" />
@@ -247,6 +249,7 @@
     <Content Include="Content\Logos\membership-icon-45x184.png" />
     <Content Include="Content\productContent.css" />
     <Content Include="Content\RegisterCode.css" />
+    <Content Include="Content\RegisterUser.css" />
     <Content Include="Content\thumbnail.css" />
     <Content Include="Content\navbar.css" />
     <Content Include="favicon.ico" />
@@ -274,6 +277,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\RegisterCode.js" />
     <Content Include="Views\Shared\_BackToListButtonPartial.cshtml" />
     <Content Include="Views\Shared\_CreateButtonPartial.cshtml" />
     <Content Include="Views\Shared\_SmallButtonPartial.cshtml" />
@@ -373,10 +377,12 @@
     <Content Include="Views\ProductContent\_ProductItemRowPartial.cshtml" />
     <Content Include="Views\ProductContent\Content.cshtml" />
     <Content Include="Views\Shared\_RegisterCodePartial.cshtml" />
+    <Content Include="Views\Shared\_RegisterUserPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Views\RegisterCode\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
