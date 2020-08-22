@@ -37,7 +37,8 @@ namespace Memberships
 
             bundles.Add(new ScriptBundle("~/bundles/carret").Include(
                       "~/Scripts/carret.js",
-                      "~/Scripts/RegisterCode.js"));
+                      "~/Scripts/RegisterCode.js",
+                      "~/Scripts/RegisterUser.js"));
 
         }
     }
