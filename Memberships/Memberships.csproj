@@ -246,6 +246,7 @@
     <Content Include="Content\Images\pdf.png" />
     <Content Include="Content\Images\unit-testing.png" />
     <Content Include="Content\Images\video.png" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\Logos\membership-icon-30x152.png" />
     <Content Include="Content\Logos\membership-icon-45x184.png" />
     <Content Include="Content\productContent.css" />
@@ -278,6 +279,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\login.js" />
     <Content Include="Scripts\RegisterCode.js" />
     <Content Include="Scripts\RegisterUser.js" />
     <Content Include="Views\Shared\_BackToListButtonPartial.cshtml" />

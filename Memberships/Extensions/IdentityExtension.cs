@@ -1,21 +1,19 @@
 ﻿using Memberships.Models;
-using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
-using System.Web;
-using System.Data.Entity;
 
 namespace Memberships.Extensions
 {
     public static class IdentityExtension
     {
-        public static string GetUserFirstName (IIdentity identity)
+        public static string GetUserFirstName(this IIdentity identity)
         {
             var db = ApplicationDbContext.Create();
-            var user = db.Users.FirstOrDefault(u => u.FirstName.Equals(identity.Name));
+            var user = db.Users.FirstOrDefault(u => u.UserName.Equals(identity.Name));
 
             return user != null ? user.FirstName : String.Empty;
         }
