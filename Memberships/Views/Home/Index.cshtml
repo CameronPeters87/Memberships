@@ -27,6 +27,10 @@
                 Name = "",
                 Password = ""
             })
+            @Html.Partial("_ForgotPasswordPanelPartial", new ForgotPasswordViewModel
+            {
+                Email = ""
+            })
         </div>
     }
 </div>

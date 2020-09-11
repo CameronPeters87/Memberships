@@ -34,14 +34,15 @@ namespace Memberships
                         "~/Content/carret.css",
                         "~/Content/RegisterCode.css",
                         "~/Content/RegisterUser.css",
-                        "~/Content/login.css"));
+                        "~/Content/login.css",
+                        "~/Content/forgot-password.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/carret").Include(
                       "~/Scripts/carret.js",
                       "~/Scripts/RegisterCode.js",
                       "~/Scripts/RegisterUser.js",
-                      "~/Scripts/login.js"));
-
+                      "~/Scripts/login.js",
+                      "~/Scripts/forgot-password.js"));
         }
     }
 }

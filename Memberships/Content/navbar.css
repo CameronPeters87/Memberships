@@ -1,21 +1,25 @@
-﻿.body {
+﻿body {
     font-family: 'Open Sans', sans-serif;
 }
 
-.navbar{
-/*    border-bottom: 1px solid #C8C8C8;*/
-    background-color: white;
+.navbar {
+    border-bottom: 1px solid #C8C8C8;
+    background-color: #FFF;
+    padding-bottom: 20px;
 }
 
 .nav a {
-    color:grey;
+    color: #555;
 }
+
     .nav a:hover {
-        color: green;
+        color: #72C02C;
     }
-    .nav > li > a:hover {
-        background-color: white;
-    }
+
+.nav > li > a:hover {
+    background-color: white;
+}
+
 .navbar-nav > li > a {
     margin-top: 25px;
     padding-top: 5px;

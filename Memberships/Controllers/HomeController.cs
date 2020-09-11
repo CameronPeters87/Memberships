@@ -1,12 +1,10 @@
-﻿using Memberships.Models;
-using System;
+﻿using Memberships.Extensions;
+using Memberships.Models;
+using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Memberships.Extensions;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Memberships.Controllers
 {
